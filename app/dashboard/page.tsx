@@ -1,7 +1,13 @@
-const Dashboard = () => {
-  return (
-    <div>Dashboard</div>
-  )
-}
+import Dropzone from "@/components/Dropzone";
+import { auth } from "@clerk/nextjs";
 
-export default Dashboard
+const Dashboard = () => {
+  const { userId } = auth();
+  return (
+    <div>
+      <Dropzone />
+    </div>
+  );
+};
+
+export default Dashboard;
