@@ -1,10 +1,10 @@
 "use client";
 
+import prettyBytes from "pretty-bytes";
+import { FileIcon, defaultStyles } from "react-file-icon";
 import { COLOR_EXTENSION_MAP } from "@/constants";
 import { FileType } from "@/typings";
 import { ColumnDef } from "@tanstack/react-table";
-import prettyBytes from "pretty-bytes";
-import { FileIcon, defaultStyles } from "react-file-icon";
 
 export const columns: ColumnDef<FileType>[] = [
   {

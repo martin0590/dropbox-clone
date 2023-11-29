@@ -1,8 +1,11 @@
 "use client";
-import { cn } from "@/lib/utils";
-import React, { useState } from "react";
-import DropzoneComponent from "react-dropzone";
+import { useState } from "react";
 import { useUser } from "@clerk/nextjs";
+import toast from "react-hot-toast";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { db, storage } from "@/firebase";
+import { cn } from "@/lib/utils";
+import DropzoneComponent from "react-dropzone";
 import {
   addDoc,
   collection,
@@ -10,9 +13,6 @@ import {
   updateDoc,
   doc,
 } from "firebase/firestore";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import toast from "react-hot-toast";
-import { db, storage } from "@/firebase";
 const Dropzone = () => {
   const [loading, setLoading] = useState(false);
   const { isLoaded, isSignedIn, user } = useUser();
@@ -31,33 +31,40 @@ const Dropzone = () => {
   };
 
   const uploadPost = async (selectedFile: File) => {
-    if (loading) return;
-    if (!user) return;
+    if (loading || !user) return;
 
     setLoading(true);
     const toastId = toast.loading("Uploading file...");
-    const docRef = await addDoc(collection(db, "users", user.id, "files"), {
-      userId: user.id,
-      filename: selectedFile.name,
-      fullName: user.fullName,
-      profileImg: user.imageUrl,
-      timestamp: serverTimestamp(),
-      type: selectedFile.type,
-      size: selectedFile.size,
-    });
 
-    const imageRef = ref(storage, `users/${user.id}/files/${docRef.id}`);
-    await uploadBytes(imageRef, selectedFile).then(async (snapshot) => {
-      const downloadURL = await getDownloadURL(imageRef);
-
-      await updateDoc(doc(db, "users", user.id, "files", docRef.id), {
-        downloadURL: downloadURL,
+    try {
+      const docRef = await addDoc(collection(db, "users", user.id, "files"), {
+        userId: user.id,
+        filename: selectedFile.name,
+        fullName: user.fullName,
+        profileImg: user.imageUrl,
+        timestamp: serverTimestamp(),
+        type: selectedFile.type,
+        size: selectedFile.size,
       });
-    });
 
-    toast.success("File uploaded successfully", {
-      id: toastId,
-    });
+      const imageRef = ref(storage, `users/${user.id}/files/${docRef.id}`);
+      await uploadBytes(imageRef, selectedFile).then(async (snapshot) => {
+        const downloadURL = await getDownloadURL(imageRef);
+
+        await updateDoc(doc(db, "users", user.id, "files", docRef.id), {
+          downloadURL: downloadURL,
+        });
+      });
+
+      toast.success("File uploaded successfully", {
+        id: toastId,
+      });
+    } catch (error) {
+      toast.error("Something went wrong", {
+        id: toastId,
+      });
+    }
+
     setLoading(false);
   };
 

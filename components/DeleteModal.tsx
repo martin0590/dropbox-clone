@@ -1,21 +1,18 @@
 "use client";
+import toast from "react-hot-toast";
+import { db, storage } from "@/firebase";
+import { useUser } from "@clerk/nextjs";
+import { useAppStore } from "@/store/store";
+import { deleteDoc, doc } from "firebase/firestore";
+import { deleteObject, ref } from "firebase/storage";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
-import { db, storage } from "@/firebase";
-import { useAppStore } from "@/store/store";
-import { useUser } from "@clerk/nextjs";
-import { deleteDoc, doc } from "firebase/firestore";
-import { deleteObject, ref } from "firebase/storage";
-import toast from "react-hot-toast";
 
 export function DeleteModal() {
   const { user } = useUser();

@@ -1,19 +1,19 @@
 "use client";
 
-import { useAppStore } from "@/store/store";
-import { useUser } from "@clerk/nextjs";
 import { useState } from "react";
+import { useUser } from "@clerk/nextjs";
+import { db } from "@/firebase";
+import toast from "react-hot-toast";
+import { useAppStore } from "@/store/store";
+import { doc, updateDoc } from "firebase/firestore";
+import { Button } from "./ui/button";
+import { Input } from "./ui/input";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
-import { doc, updateDoc } from "firebase/firestore";
-import { db } from "@/firebase";
-import toast from "react-hot-toast";
 
 const RenameModal = () => {
   const { user } = useUser();
@@ -80,7 +80,7 @@ const RenameModal = () => {
             <Button
               type="submit"
               size={"sm"}
-              className="px-3 flex-1"
+              className="px-3 flex-1 bg-blue-500 hover:bg-blue-600"
               onClick={() => renameFile()}
             >
               <span className="sr-only">Rename</span>

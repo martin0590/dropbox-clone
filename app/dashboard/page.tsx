@@ -1,9 +1,9 @@
-import Dropzone from "@/components/Dropzone";
-import TableWrapper from "@/components/table/TableWrapper";
 import { db } from "@/firebase";
-import { FileType } from "@/typings";
 import { auth } from "@clerk/nextjs";
 import { getDocs, collection } from "firebase/firestore";
+import TableWrapper from "@/components/table/TableWrapper";
+import Dropzone from "@/components/Dropzone";
+import { FileType } from "@/typings";
 async function Dashboard() {
   const { userId } = auth();
 
@@ -23,7 +23,7 @@ async function Dashboard() {
       <Dropzone />
 
       <section className="container space-y-5">
-        <h2 className="font-bold">All Files</h2>
+        <h2 className="font-bold mt-4">All Files</h2>
 
         <div className="">
           <TableWrapper skeletonFiles={skeletonFiles} />

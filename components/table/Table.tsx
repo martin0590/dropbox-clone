@@ -1,12 +1,17 @@
 "use client";
 
+import { useAppStore } from "@/store/store";
+import { PencilIcon, TrashIcon } from "lucide-react";
+import { DataTableProps, FileType } from "@/typings";
+import { Button } from "../ui/button";
+import { DeleteModal } from "../DeleteModal";
+import RenameModal from "../RenameModal";
 import {
   ColumnDef,
   flexRender,
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-
 import {
   Table,
   TableBody,
@@ -15,17 +20,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Button } from "../ui/button";
-import { PencilIcon, TrashIcon } from "lucide-react";
-import { FileType } from "@/typings";
-import { useAppStore } from "@/store/store";
-import { DeleteModal } from "../DeleteModal";
-import RenameModal from "../RenameModal";
-
-interface DataTableProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[];
-  data: TData[];
-}
 
 export function DataTable<TData, TValue>({
   columns,
