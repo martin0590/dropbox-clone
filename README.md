@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## FunMoments
 
-## Getting Started
+### Tools
 
-First, run the development server:
+- [NextJS](https://nextjs.org/)
+- [Firebase](https://firebase.google.com/)
+- [clerk](https://clerk.com/)
+- [zustand](https://github.com/pmndrs/zustand)
+- [React dropZone](https://www.npmjs.com/package/react-dropzone)
+- [Shadcn](https://ui.shadcn.com/)
+- [Tailwind](https://tailwindcss.com/)
+- [Typescript](https://www.typescriptlang.org/)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Table of Contents
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- [Usage](#usage)
+- [Features](#features)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Usage
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. Log in using Gmail.
+2. click on try it.
+3. drop a file or click in the dropzone (it needs to be 20 mb size or lower).
+4. download the file by clicking on download or you can click on rename to rename the file.
 
-## Learn More
+## Features
 
-To learn more about Next.js, take a look at the following resources:
+### 1. User Authentication
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Filox implements user authentication to ensure a personalized experience for each user.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### 2. Dark Mode
 
-## Deploy on Vercel
+Users can change between light and dark mode, or based on their system preferences.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 3. Photo Sharing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+FunMoments allows users to upload and share photos with their followers.
+
+### 5. view your uploaded files
+
+You can see what files you uploaded and even change their names and download them.
+
+## License
+
+This project is licensed under the [MIT License](https://choosealicense.com/licenses/mit/).

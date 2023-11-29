@@ -23,7 +23,7 @@ export default function Home() {
             href="/dashboard"
             className="flex cursor-pointer bg-blue-500 p-5 w-fit"
           >
-            Try it for free!
+            Try it!
             <ArrowRight className="ml-10" />
           </Link>
         </div>
