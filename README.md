@@ -1,5 +1,3 @@
-## FunMoments
-
 ### Tools
 
 - [NextJS](https://nextjs.org/)
